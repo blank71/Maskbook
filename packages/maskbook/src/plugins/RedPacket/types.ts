@@ -1,5 +1,10 @@
 import type { ERC20TokenRecord } from '../Wallet/database/types'
-import type { EthereumTokenType, EthereumNetwork } from '@dimensiondev/web3-shared'
+import type {
+    EthereumTokenType,
+    EthereumNetwork,
+    NativeTokenDetailed,
+    ERC20TokenDetailed,
+} from '@dimensiondev/web3-shared'
 import type { Transaction } from 'web3-core'
 import type { TokenOutMask } from '../ITO/types'
 
@@ -149,7 +154,7 @@ export namespace History {
         last_updated_time: number
         duration: number
         chain_id: number
-        token: EthereumTokenType.Native | EthereumTokenType.ERC20
+        token: NativeTokenDetailed | ERC20TokenDetailed
         creator: {
             name: string
             address: string
