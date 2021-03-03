@@ -1,8 +1,6 @@
-import type { RedPacketRecord, RedPacketJSONPayload, RedPacket_InMask_Record, History } from './types'
-import { RED_PACKET_HISTORY_URL } from './constants'
+import type { RedPacketRecord, RedPacketJSONPayload, RedPacketRecordWithHistory } from './types'
 import { RedPacketMessage } from './messages'
 import * as database from './database'
-import Services from '../../extension/service'
 import { getChainId } from '../../extension/background-script/EthereumService'
 import * as subgraph from './apis'
 
@@ -19,25 +17,6 @@ export async function discoverRedPacket(from: string, payload: RedPacketJSONPayl
     RedPacketMessage.events.redPacketUpdated.sendToAll(undefined)
 }
 
-export function getRedPacketsFromDB() {
-    return database.getRedPackets()
-}
-
-export function getRedPacketFromDB(rpid: string) {
-    return database.getRedPacket(rpid)
-}
-
-export async function getRedPacketsFromChain(from: string, startBlock: number) {
-    const url = new URL(RED_PACKET_HISTORY_URL)
-    url.searchParams.set('chainId', String(await Services.Ethereum.getChainId(from)))
-    url.searchParams.set('from', from)
-    url.searchParams.set('startBlock', String(startBlock))
-    url.searchParams.set('endBlock', 'latest')
-    const response = await fetch(url.toString())
-    if (response.status !== 200) return []
-    return response.json() as Promise<History.RedPacketRecord[]>
-}
-
 export async function getAllRedPackets(address: string) {
     const chainId = await getChainId()
     const redPacketsFromChain = await subgraph.getAllRedPackets(address)
@@ -51,5 +30,5 @@ export async function getAllRedPackets(address: string) {
             })
         }
         return acc
-    }, [] as RedPacket_InMask_Record[])
+    }, [] as RedPacketRecordWithHistory[])
 }
