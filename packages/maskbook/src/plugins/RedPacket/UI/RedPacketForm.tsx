@@ -25,6 +25,7 @@ import {
     RED_PACKET_MAX_SHARES,
     RED_PACKET_CONSTANTS,
     RED_PACKET_DEFAULT_SHARES,
+    RED_PACKET_CONTRACT_VERSION,
 } from '../constants'
 import { TokenAmountPanel } from '../../../web3/UI/TokenAmountPanel'
 import { useCreateCallback } from '../hooks/useCreateCallback'
@@ -69,12 +70,12 @@ export function RedPacketForm(props: RedPacketFormProps) {
     const { t } = useI18N()
     const classes = useStylesExtends(useStyles(), props)
 
-    const HAPPY_RED_PACKET_ADDRESS = useConstant(RED_PACKET_CONSTANTS, 'HAPPY_RED_PACKET_ADDRESS')
+    const HAPPY_RED_PACKET_ADDRESS = useConstant(RED_PACKET_CONSTANTS, 'HAPPY_RED_PACKET_ADDRESS_V2')
 
     // context
     const account = useAccount()
     const chainId = useChainId()
-    const RED_PACKET_ADDRESS = useConstant(RED_PACKET_CONSTANTS, 'HAPPY_RED_PACKET_ADDRESS')
+    const RED_PACKET_ADDRESS = useConstant(RED_PACKET_CONSTANTS, 'HAPPY_RED_PACKET_ADDRESS_V2')
 
     //#region select token
     const { value: nativeTokenDetailed } = useNativeTokenDetailed()
@@ -153,6 +154,7 @@ export function RedPacketForm(props: RedPacketFormProps) {
     // assemble JSON payload
     const payload = useRef<RedPacketJSONPayload>({
         contract_address: HAPPY_RED_PACKET_ADDRESS,
+        contract_version: RED_PACKET_CONTRACT_VERSION,
         network: resolveChainName(chainId) as EthereumNetwork,
     } as RedPacketJSONPayload)
 
@@ -222,6 +224,7 @@ export function RedPacketForm(props: RedPacketFormProps) {
                 id: createState.hash,
                 from: '',
                 password: password.current,
+                contract_version: RED_PACKET_CONTRACT_VERSION,
             }
             RedPacketRPC.discoverRedPacket(record)
         }
