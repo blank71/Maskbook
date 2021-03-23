@@ -14,6 +14,7 @@ import {
     useNonce,
     useGasPrice,
 } from '@dimensiondev/web3-shared'
+import { useI18N } from '../../../utils/i18n-next-ui'
 import type { TransactionReceipt } from 'web3-core'
 import { RED_PACKET_CONTRACT_VERSION } from '../constants'
 import type { HappyRedPacketV2 } from '@dimensiondev/contracts/types/HappyRedPacketV2'
@@ -35,6 +36,7 @@ export function useCreateCallback(redPacketSettings: Omit<RedPacketSettings, 'pa
     const gasPrice = useGasPrice()
     const account = useAccount()
     const chainId = useChainId()
+    const { t } = useI18N()
     const [createState, setCreateState] = useTransactionState()
     const redPacketContract = useRedPacketContract(RED_PACKET_CONTRACT_VERSION)
     const [createSettings, setCreateSettings] = useState<RedPacketSettings | null>(null)
@@ -77,12 +79,20 @@ export function useCreateCallback(redPacketSettings: Omit<RedPacketSettings, 'pa
         try {
             signedPassword = await Services.Ethereum.sign(Web3Utils.sha3(message) ?? '', account)
         } catch (e) {
+            // it is trick, log(e) print {"code": 4001 ...}, log(e.code) print -1
+            if (e.message === 'MetaMask Message Signature: User denied message signature.') {
+                setCreateState({
+                    type: TransactionStateType.FAILED,
+                    error: new Error(t('plugin_wallet_cancel_sign')),
+                })
+                return
+            }
             signedPassword = ''
         }
         if (!signedPassword) {
             setCreateState({
                 type: TransactionStateType.FAILED,
-                error: new Error('Failed to sign password.'),
+                error: new Error(t('plugin_wallet_fail_to_sign')),
             })
             return
         }
@@ -121,7 +131,7 @@ export function useCreateCallback(redPacketSettings: Omit<RedPacketSettings, 'pa
                     from: account,
                     value,
                 })
-                .catch((error) => {
+                .catch((error: any) => {
                     setCreateState({
                         type: TransactionStateType.FAILED,
                         error,
