@@ -664,6 +664,7 @@
     "plugin_dhedge_loading": "",
     "plugin_dhedge_pool_not_found": "",
     "plugin_dhedge_smt_wrong": "",
+    "token": "",
     "wallet_status_title": "アカウント",
     "wallet_status_connect_with": "{{provider}} で接続する",
     "wallet_status_button_change": "変更",
