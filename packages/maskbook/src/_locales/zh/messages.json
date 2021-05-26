@@ -352,6 +352,7 @@
     "plugin_red_packet_claim": "",
     "plugin_red_packet_claiming": "",
     "plugin_red_packet_refund": "",
+    "plugin_red_packet_empty": "",
     "plugin_red_packet_refunding": "",
     "plugin_red_packet_select_existing": "選擇已有紅包",
     "plugin_red_packet_attached_message": "附言",
