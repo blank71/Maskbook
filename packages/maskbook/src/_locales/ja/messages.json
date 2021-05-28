@@ -547,6 +547,7 @@
     "plugin_ito_amount_unlocked": "",
     "plugin_ito_amount_unlocked_infinity": "",
     "plugin_ito_unlocking_symbol": "",
+    "plugin_ito_placeholder_when_token_unselected": "",
     "plugin_collectible_you": "",
     "plugin_collectible_done": "",
     "plugin_collectible_retry": "",
