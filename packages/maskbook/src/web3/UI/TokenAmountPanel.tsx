@@ -99,6 +99,7 @@ export function TokenAmountPanel(props: TokenAmountPanelProps) {
             value={amount}
             variant="outlined"
             onChange={onChange}
+            placeholder="0.0"
             InputProps={{
                 inputProps: {
                     autoComplete: 'off',
@@ -109,7 +110,6 @@ export function TokenAmountPanel(props: TokenAmountPanelProps) {
                     minLength: MIN_AMOUNT_LENGTH,
                     maxLength: MAX_AMOUNT_LENGTH,
                     pattern: '^[0-9]*[.,]?[0-9]*$',
-                    placeholder: '0.0',
                     spellCheck: false,
                     className: classes.input,
                 },

@@ -8,7 +8,7 @@ import { useTokenBalance } from '../../../web3/hooks/useTokenBalance'
 import { FungibleTokenDetailed, EthereumTokenType } from '../../../web3/types'
 import { TokenAmountPanel } from '../../../web3/UI/TokenAmountPanel'
 import type { TokenAmountPanelProps } from '../../../web3/UI/TokenAmountPanel'
-import { useRemoteControlledDialog } from '../../../utils/hooks/useRemoteControlledDialog'
+import { useI18N, useRemoteControlledDialog } from '../../../utils'
 import { WalletMessages, SelectTokenDialogEvent } from '../../Wallet/messages'
 
 const useStyles = makeStyles((theme) => ({
@@ -73,6 +73,7 @@ export function ExchangeTokenPanel(props: ExchangetokenPanelProps) {
         onRemove,
         onAdd,
     } = props
+    const { t } = useI18N()
 
     const classes = useStyles()
 
@@ -139,6 +140,7 @@ export function ExchangeTokenPanel(props: ExchangetokenPanelProps) {
                 }}
                 TextFieldProps={{
                     disabled: !exchangeToken,
+                    placeholder: !exchangeToken ? t('plugin_ito_placeholder_when_token_unselected') : '0.0',
                 }}
                 {...props.TokenAmountPanelProps}
             />
