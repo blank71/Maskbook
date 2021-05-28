@@ -1,7 +1,6 @@
 import { useState, useRef, useCallback, useMemo, ChangeEvent, useEffect } from 'react'
 import { makeStyles, FormControl, TextField, InputLabel, Select, MenuItem, MenuProps } from '@material-ui/core'
 import { omit } from 'lodash-es'
-import classNames from 'classnames'
 import { v4 as uuid } from 'uuid'
 import BigNumber from 'bignumber.js'
 
@@ -47,10 +46,7 @@ const useStyles = makeStyles((theme) => ({
         flex: 1,
         padding: theme.spacing(0.5),
     },
-    selectInput: {
-        paddingLeft: theme.spacing(2),
-        paddingRight: theme.spacing(2),
-    },
+
     tip: {
         fontSize: 12,
         color: theme.palette.text.secondary,
@@ -59,6 +55,10 @@ const useStyles = makeStyles((theme) => ({
         marginTop: theme.spacing(1.5),
     },
     selectShrinkLabel: {
+        top: 6,
+        backgroundColor: theme.palette.background.default,
+        paddingLeft: 2,
+        paddingRight: 7,
         transform: 'translate(17px, -10px) scale(0.75) !important',
     },
     inputShrinkLabel: {
@@ -259,10 +259,9 @@ export function RedPacketForm(props: RedPacketFormProps) {
     return (
         <>
             <div className={classes.line}>
-                <FormControl className={classNames(classes.input, classes.selectInput)} variant="outlined">
+                <FormControl className={classes.input} variant="outlined">
                     <InputLabel className={classes.selectShrinkLabel}>{t('plugin_red_packet_split_mode')}</InputLabel>
                     <Select
-                        variant="standard"
                         value={isRandom ? 1 : 0}
                         onChange={(e) => {
                             // foolproof, reset amount since the meaning of amount changed:
