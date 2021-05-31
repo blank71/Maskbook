@@ -1,6 +1,5 @@
 import { omit, pick } from 'lodash-es'
 import { getChainId } from '../../../extension/background-script/EthereumService'
-import { getConstant } from '../../../web3/helpers'
 import { tokenIntoMask } from '../../ITO/helpers'
 import { RED_PACKET_CONSTANTS } from '../constants'
 import type {
@@ -9,8 +8,7 @@ import type {
     RedPacketSubgraphInMask,
     RedPacketHistory,
 } from '../types'
-import { resolveChainName } from '../../../web3/pipes'
-import { EthereumNetwork, EthereumTokenType, ChainId } from '../../../web3/types'
+import { EthereumNetwork, EthereumTokenType, ChainId, getConstant, resolveChainName } from '@dimensiondev/web3-shared'
 
 const redPacketBasicKeys = [
     'contract_address',
