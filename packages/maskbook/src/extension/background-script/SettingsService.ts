@@ -12,6 +12,7 @@ import { queryMyPersonas } from './IdentityService'
 import {
     currentBalanceSettings,
     currentBlockNumberSettings,
+    currentPortfolioDataProviderSettings,
     currentSelectedWalletAddressSettings,
     currentSelectedWalletNetworkSettings,
     currentSelectedWalletProviderSettings,
@@ -47,6 +48,10 @@ export const [getCurrentSelectedWalletNetwork, setCurrentSelectedWalletNetwork] 
 )
 
 export const [getSelectedWalletAddress, setSelectedWalletAddress] = create(currentSelectedWalletAddressSettings)
+
+export const [getCurrentPortfolioDataProvider, setCurrentPortfolioDataProvider] = create(
+    currentPortfolioDataProviderSettings,
+)
 
 export async function getWalletAllowTestChain() {
     return Flags.wallet_allow_test_chain
