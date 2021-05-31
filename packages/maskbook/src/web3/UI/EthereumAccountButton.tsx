@@ -1,4 +1,4 @@
-import { formatEthereumAddress, FormattedBalance } from '@dimensiondev/maskbook-shared'
+import { formatEthereumAddress, FormattedBalance, useValueRef } from '@dimensiondev/maskbook-shared'
 import { ChainId, resolveChainColor, useAccount, useChainId, useNativeTokenBalance } from '@dimensiondev/web3-shared'
 import { Button, ButtonProps, makeStyles, Typography } from '@material-ui/core'
 import AccountBalanceWalletIcon from '@material-ui/icons/AccountBalanceWallet'
@@ -10,7 +10,7 @@ import { ProviderIcon } from '../../components/shared/ProviderIcon'
 import { useWallet } from '../../plugins/Wallet/hooks/useWallet'
 import { WalletMessages } from '../../plugins/Wallet/messages'
 import { currentSelectedWalletProviderSettings } from '../../plugins/Wallet/settings'
-import { Flags, useI18N, useRemoteControlledDialog, useValueRef } from '../../utils'
+import { Flags, useI18N, useRemoteControlledDialog } from '../../utils'
 
 const useStyles = makeStyles((theme) => {
     return {

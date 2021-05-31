@@ -1,6 +1,6 @@
 import { useAsync } from 'react-use'
 import { ValueRef } from '@dimensiondev/holoflows-kit'
-import { useValueRef } from '../../../utils/hooks/useValueRef'
+import { useValueRef } from '@dimensiondev/maskbook-shared'
 import type { RedPacketRecord } from '../types'
 import { RedPacketArrayComparer } from '../helpers'
 import { resolveChainId, useAccount, useBlockNumberOnce, useChainId } from '@dimensiondev/web3-shared'

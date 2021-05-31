@@ -3,7 +3,7 @@ import { Copy, ExternalLink } from 'react-feather'
 import { useCopyToClipboard } from 'react-use'
 import ErrorIcon from '@material-ui/icons/Error'
 import { Button, DialogActions, DialogContent, Link, makeStyles, Typography } from '@material-ui/core'
-import { FormattedAddress } from '@dimensiondev/maskbook-shared'
+import { FormattedAddress, useValueRef } from '@dimensiondev/maskbook-shared'
 import {
     useChainId,
     useChainIdValid,
@@ -17,7 +17,7 @@ import { InjectedDialog } from '../../../components/shared/InjectedDialog'
 import { ProviderIcon } from '../../../components/shared/ProviderIcon'
 import { useSnackbarCallback } from '../../../extension/options-page/DashboardDialogs/Base'
 import Services from '../../../extension/service'
-import { useRemoteControlledDialog, useValueRef, useI18N } from '../../../utils'
+import { useRemoteControlledDialog, useI18N } from '../../../utils'
 import { EthereumChainChip } from '../../../web3/UI/EthereumChainChip'
 import { useWallet } from '../hooks/useWallet'
 import { WalletMessages } from '../messages'

@@ -16,7 +16,8 @@ import {
     DialogActions,
 } from '@material-ui/core'
 import { Plugin, useActivatedPluginsSNSAdaptor } from '@dimensiondev/mask-plugin-infra'
-import { CompositionEvent, MaskMessage, useValueRef, useI18N, Flags } from '../../utils'
+import { useValueRef } from '@dimensiondev/maskbook-shared'
+import { CompositionEvent, MaskMessage, useI18N, Flags } from '../../utils'
 import { useStylesExtends, or } from '../custom-ui-helper'
 import type { Profile, Group } from '../../database'
 import { useFriendsList, useCurrentIdentity, useMyIdentities } from '../DataSource/useActivatedUI'

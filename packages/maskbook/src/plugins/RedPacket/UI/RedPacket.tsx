@@ -1,4 +1,4 @@
-import { formatBalance } from '@dimensiondev/maskbook-shared'
+import { formatBalance, useValueRef } from '@dimensiondev/maskbook-shared'
 import {
     ChainId,
     isDAI,
@@ -23,7 +23,7 @@ import {
 } from '../../../plugins/Wallet/settings'
 import { MetaMaskIcon } from '../../../resources/MetaMaskIcon'
 import { activatedSocialNetworkUI } from '../../../social-network'
-import { useI18N, useRemoteControlledDialog, useValueRef } from '../../../utils'
+import { useI18N, useRemoteControlledDialog } from '../../../utils'
 import { EthereumChainBoundary } from '../../../web3/UI/EthereumChainBoundary'
 import { EthereumMessages } from '../../Ethereum/messages'
 import { WalletMessages } from '../../Wallet/messages'
