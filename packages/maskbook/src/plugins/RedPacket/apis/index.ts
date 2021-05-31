@@ -8,7 +8,13 @@ import type {
     RedPacketSubgraphInMask,
     RedPacketHistory,
 } from '../types'
-import { EthereumNetwork, EthereumTokenType, ChainId, getConstant, resolveChainName } from '@dimensiondev/web3-shared'
+import {
+    EthereumNetwork,
+    EthereumTokenType,
+    ChainId,
+    getConstant,
+    resolveChainNetwork,
+} from '@dimensiondev/web3-shared'
 
 const redPacketBasicKeys = [
     'contract_address',
@@ -115,7 +121,7 @@ export async function getRedPacketHistory(address: string, chainId: ChainId) {
                 name: redPacketSubgraphInMask.creator.name,
                 message: redPacketSubgraphInMask.message,
             }
-            const network = resolveChainName(redPacketSubgraphInMask.chain_id) as EthereumNetwork
+            const network = resolveChainNetwork(redPacketSubgraphInMask.chain_id) as EthereumNetwork
             const token_type = redPacketSubgraphInMask.token.type
             let token
             if (token_type === EthereumTokenType.ERC20) {

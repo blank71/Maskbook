@@ -13,7 +13,7 @@ import {
     useConstant,
     useChainId,
     TransactionStateType,
-    resolveChainName,
+    resolveChainNetwork,
     useNativeTokenDetailed,
     useTokenBalance,
 } from '@dimensiondev/web3-shared'
@@ -159,7 +159,7 @@ export function RedPacketForm(props: RedPacketFormProps) {
     const payload = useRef<RedPacketJSONPayload>({
         contract_address: HAPPY_RED_PACKET_ADDRESS,
         contract_version: RED_PACKET_CONTRACT_VERSION,
-        network: resolveChainName(chainId) as EthereumNetwork,
+        network: resolveChainNetwork(chainId) as EthereumNetwork,
     } as RedPacketJSONPayload)
 
     //#region remote controlled transaction dialog
